@@ -80,6 +80,17 @@ window.addEventListener('DOMContentLoaded', function() {
                 seconds.textContent = t.seconds;
             }
 
+            //добавление нуля с помощью функции
+            // function addZero(num){
+            //     if(num <= 9) {
+            //         return '0' + num;
+            //     } else return num;
+            // };
+
+            // hours.textContent = addZero(t.hours);
+            // minutes.textContent = addZero(t.minutes);
+            // seconds.textContent = addZero(t.seconds);
+
             if (t.total <= 0) {
                 clearInterval(timeInterval);
                 hours.textContent = '00';
