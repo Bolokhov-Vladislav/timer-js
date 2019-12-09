@@ -1,7 +1,5 @@
 window.addEventListener('DOMContentLoaded', function() {
-
-    'use strict';
-    let deadline = '2019-12-12';
+    let deadline = '2019-12-17';
 
     function getTimeRemaining(endtime) {
         let t = Date.parse(endtime) - Date.parse(new Date());
@@ -10,6 +8,7 @@ window.addEventListener('DOMContentLoaded', function() {
             minutes = Math.floor((t/1000/60) % 60),
             hours = Math.floor((t/1000/60/60) % 24),
             days = Math.floor((t/(1000*60*60*24)));
+           
             return {
                 'total' : t,
                 'days' : days,
@@ -17,6 +16,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 'minutes' : minutes,
                 'seconds' : seconds
             };
+            
     }
 
     function setClock (id, endtime ) {
@@ -33,10 +33,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
             ((t.days % 10) >= 2 && (t.days % 10) <= 4) ? days.textContent = t.days + ' дня' : 
             ((t.days % 10) === 1) ? days.textContent = t.days + ' день' : days.textContent = t.days + ' дней';
+            (t.seconds < 10 ) ? seconds.textContent = '0' + t.seconds : seconds.textContent = t.seconds;
+            (t.minutes < 10 ) ? minutes.textContent = '0' + t.minutes : minutes.textContent = t.minutes;
             (t.hours < 10) ? hours.textContent = '0' + t.hours : hours.textContent = t.hours;
-            (t.minutes < 10) ? minutes.textContent = '0' + t.minutes : minutes.textContent = t.minutes;
-            (t.seconds < 10) ? seconds.textContent = '0' + t.seconds : seconds.textContent = t.seconds;
-
+            
             if (t.total <= 0) {
                 clearInterval(timeInterval);
                 days.textContent = '0';
@@ -47,5 +47,4 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }
     setClock('timer', deadline);
-
 });
